@@ -1,0 +1,129 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcExcel";
+
+package grpcexcel;
+
+message Empty {
+}
+
+message DateTime {
+	int32 year = 2;
+	int32 month = 3;
+	int32 day = 4;
+	int32 hour = 5;
+	int32 minute = 6;
+	int32 second = 7;
+}
+
+message HandlerRq {
+	string handler = 1;
+	bool saveIt = 2;
+}
+
+message OneCellValue {
+	enum ValueType {
+		NULL = 0;
+		STRING = 1;
+		DATETIME = 2;
+		DECIMAL = 3;
+		BOOL = 4;
+		INT = 5;
+		DOUBLE = 6;
+	}
+
+	ValueType type = 1;
+	double doubleVal = 2;
+	string strVal = 3;
+	DateTime dateVal = 4;
+	bool boolVal = 5;
+	int64 intVal = 6;
+
+	string format = 7;
+}
+
+message NamedRange {
+	string name = 1;
+	repeated OneCellValue vals = 2;
+	
+	int32 countCols = 3;
+}
+
+message NamedCellsResp {
+	int32 Count = 1;
+	repeated NamedRange names = 2;
+}
+
+message CellsResp {
+	int32 Count = 1;
+	repeated NamedRange names = 2;
+}
+
+message GetNamedCellsRq {
+	string handler = 1;
+	repeated string names = 2;
+}
+message GetCellsRq {
+	string handler = 1;
+	string sheet = 2;
+
+	string begin = 3;
+	string end = 4;
+}
+
+message GetRangesRq {
+	string handler = 1;
+	string sheet = 2;
+	repeated string names = 3;
+}
+
+message UploadRq {
+	string name = 1;
+	bytes bytes = 2;
+}
+
+message UploadResp {
+	string handler = 1;
+	bool isOk = 2;
+}
+
+message ListResp {
+	repeated string filename = 1;
+}
+
+message SetSetValuesRq {
+	string handler = 1;
+	repeated NamedRange ranges = 2;
+}
+
+message OpenRq {
+	string filename = 1;
+	string handler = 2;
+	bool withSheets = 3;
+}
+
+message ExcelSheet {
+	string name = 1;
+	int32 maxRow = 2;
+	int32 maxCol = 3;
+}
+
+message OpenResp {
+	string handler = 1;
+	bool isOk = 2;
+	string errMsg = 3;
+	repeated ExcelSheet sheets = 4;
+}
+
+service ExcelService {
+	rpc Ping (HandlerRq) returns (Empty);
+	rpc Upload(UploadRq) returns (UploadResp);
+	
+	rpc List(Empty) returns (ListResp);
+	rpc Open(OpenRq) returns (OpenResp);
+	rpc Close(HandlerRq) returns (Empty);
+
+	rpc GetNamedCells (GetNamedCellsRq) returns (NamedCellsResp);
+	rpc GetCells (GetCellsRq) returns (CellsResp);
+	rpc SetValues (SetSetValuesRq) returns (Empty);
+}
