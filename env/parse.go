@@ -2,12 +2,12 @@ package env
 
 import (
 	"github.com/caarlos0/env"
-	"github.com/deltrinos/tpl21/log"
 )
 
-func FillEnv(e interface{}) {
+func FillEnv(e interface{}) error {
 	err := env.Parse(e)
 	if err != nil {
-		log.Error().Err(err).Msgf("Failed to env.Parse %v", err)
+		return err
 	}
+	return nil
 }
