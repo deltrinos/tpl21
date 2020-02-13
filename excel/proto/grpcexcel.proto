@@ -115,6 +115,25 @@ message OpenResp {
 	repeated ExcelSheet sheets = 4;
 }
 
+message MacroNameRq {
+	string handler = 1;
+	string name = 2;
+}
+
+message ListMacrosRq {
+	string handler = 1;
+	repeated string macroName = 2;
+}
+
+message ListMacrosResp {
+	repeated string macroName = 1;
+}
+
+message StatusMacroResp {
+	 string status = 1;
+}
+
+
 service ExcelService {
 	rpc Ping (HandlerRq) returns (Empty);
 	rpc Upload(UploadRq) returns (UploadResp);
@@ -126,4 +145,7 @@ service ExcelService {
 	rpc GetNamedCells (GetNamedCellsRq) returns (NamedCellsResp);
 	rpc GetCells (GetCellsRq) returns (CellsResp);
 	rpc SetValues (SetSetValuesRq) returns (Empty);
+
+	rpc GetMacroNames(ListMacrosRq) returns (ListMacrosResp);
+	rpc RunMacro(MacroNameRq) returns (StatusMacroResp);
 }

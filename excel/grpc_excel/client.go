@@ -10,6 +10,11 @@ import (
 	"time"
 )
 
+const (
+	MaxGrpcSendMsgSize    = 1024 * 1024 * 100
+	MaxGrpcReceiveMsgSize = 1024 * 1024 * 10
+)
+
 type GrpcExcelClient struct {
 	conn    *grpc.ClientConn
 	c       excel.ExcelServiceClient
@@ -27,6 +32,10 @@ func New(server string) (*GrpcExcelClient, error) {
 	client.conn, err = grpc.DialContext(ctx, server,
 		grpc.WithInsecure(),
 		grpc.WithBlock(),
+		grpc.WithDefaultCallOptions(
+			grpc.MaxCallRecvMsgSize(MaxGrpcReceiveMsgSize),
+			grpc.MaxCallSendMsgSize(MaxGrpcSendMsgSize),
+		),
 	)
 	if err != nil {
 		log.Error().Err(err).Msgf("grpc.Dial error: %v", err)

@@ -4,7 +4,7 @@
 copy:
 	cp -f grpcexcel.proto proto/grpcexcel.proto
 
-.PHONY:copy
-run:    copy
+.PHONY:run
+run:    
 	protoc --go_out=plugins=grpc:. proto/grpcexcel.proto
 
