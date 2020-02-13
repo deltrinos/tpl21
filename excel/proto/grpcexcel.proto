@@ -122,15 +122,15 @@ message MacroNameRq {
 
 message ListMacrosRq {
 	string handler = 1;
-	repeated string macroName = 2;
+	repeated string macroNames = 2;
 }
 
 message ListMacrosResp {
-	repeated string macroName = 1;
+	repeated string macroNames = 1;
 }
 
 message StatusMacroResp {
-	 string status = 1;
+	 int32 status = 1;
 }
 
 

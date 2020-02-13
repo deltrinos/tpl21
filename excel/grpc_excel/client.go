@@ -20,6 +20,7 @@ type GrpcExcelClient struct {
 	c       excel.ExcelServiceClient
 	handler string
 	list    []string
+	macros  []string
 }
 
 type ExcelHandler string
@@ -123,6 +124,33 @@ func (client *GrpcExcelClient) List() ([]string, error) {
 	}
 	client.list = r.Filename
 	return client.list, nil
+}
+
+func (client *GrpcExcelClient) ListMacros(handler string) ([]string, error) {
+	ctx, _ := context.WithTimeout(context.Background(), 60*time.Second)
+	r, err := client.c.GetMacroNames(ctx, &excel.ListMacrosRq{
+		Handler:    handler,
+		MacroNames: []string{},
+	})
+	if err != nil {
+		log.Error().Msgf("ListMacros error %v", err)
+		return nil, err
+	}
+	client.macros = r.MacroNames
+	return client.macros, nil
+}
+
+func (client *GrpcExcelClient) RunMacros(handler string, macroToRun string) (int, error) {
+	ctx, _ := context.WithTimeout(context.Background(), 60*time.Second)
+	r, err := client.c.RunMacro(ctx, &excel.MacroNameRq{
+		Handler: handler,
+		Name:    macroToRun,
+	})
+	if err != nil {
+		log.Error().Msgf("RunMacro(%s) error %v", macroToRun, err)
+		return 0, err
+	}
+	return int(r.Status), nil
 }
 
 func (client *GrpcExcelClient) GetNamedCells(handler string, names []string) ([]*excel.NamedRange, error) {
