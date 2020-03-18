@@ -52,11 +52,15 @@ message NamedRange {
 message NamedCellsResp {
 	int32 Count = 1;
 	repeated NamedRange names = 2;
+	bool isOk = 3;
+	string errMsg = 4;
 }
 
 message CellsResp {
 	int32 Count = 1;
 	repeated NamedRange names = 2;
+	bool isOk = 3;
+	string errMsg = 4;
 }
 
 message GetNamedCellsRq {
@@ -85,10 +89,13 @@ message UploadRq {
 message UploadResp {
 	string handler = 1;
 	bool isOk = 2;
+	string errMsg = 3;
 }
 
 message ListResp {
 	repeated string filename = 1;
+	bool isOk = 2;
+	string errMsg = 3;
 }
 
 message SetSetValuesRq {
@@ -127,10 +134,13 @@ message ListMacrosRq {
 
 message ListMacrosResp {
 	repeated string macroNames = 1;
+	bool isOk = 2;
+	string errMsg = 3;
 }
 
-message StatusMacroResp {
-	 int32 status = 1;
+message StatusResp {
+	 bool isOk = 1;
+	 string errMsg = 2;
 }
 
 
@@ -144,8 +154,8 @@ service ExcelService {
 
 	rpc GetNamedCells (GetNamedCellsRq) returns (NamedCellsResp);
 	rpc GetCells (GetCellsRq) returns (CellsResp);
-	rpc SetValues (SetSetValuesRq) returns (Empty);
+	rpc SetValues (SetSetValuesRq) returns (StatusResp);
 
 	rpc GetMacroNames(ListMacrosRq) returns (ListMacrosResp);
-	rpc RunMacro(MacroNameRq) returns (StatusMacroResp);
+	rpc RunMacro(MacroNameRq) returns (StatusResp);
 }

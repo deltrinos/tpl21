@@ -140,17 +140,23 @@ func (client *GrpcExcelClient) ListMacros(handler string) ([]string, error) {
 	return client.macros, nil
 }
 
-func (client *GrpcExcelClient) RunMacros(handler string, macroToRun string) (int, error) {
+func (client *GrpcExcelClient) RunMacros(handler string, macroToRun string) error {
 	ctx, _ := context.WithTimeout(context.Background(), 60*time.Second)
 	r, err := client.c.RunMacro(ctx, &excel.MacroNameRq{
 		Handler: handler,
 		Name:    macroToRun,
 	})
+
 	if err != nil {
 		log.Error().Msgf("RunMacro(%s) error %v", macroToRun, err)
-		return 0, err
+		return err
 	}
-	return int(r.Status), nil
+
+	if r.IsOk {
+		return nil
+	} else {
+		return errors.New(r.ErrMsg)
+	}
 }
 
 func (client *GrpcExcelClient) GetNamedCells(handler string, names []string) ([]*excel.NamedRange, error) {
