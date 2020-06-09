@@ -756,6 +756,116 @@ func (m *UploadResp) GetErrMsg() string {
 	return ""
 }
 
+type DownloadRq struct {
+	Handler              string   `protobuf:"bytes,1,opt,name=handler,proto3" json:"handler,omitempty"`
+	ModelFile            string   `protobuf:"bytes,2,opt,name=modelFile,proto3" json:"modelFile,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DownloadRq) Reset()         { *m = DownloadRq{} }
+func (m *DownloadRq) String() string { return proto.CompactTextString(m) }
+func (*DownloadRq) ProtoMessage()    {}
+func (*DownloadRq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e8873c4c109c555c, []int{12}
+}
+
+func (m *DownloadRq) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DownloadRq.Unmarshal(m, b)
+}
+func (m *DownloadRq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DownloadRq.Marshal(b, m, deterministic)
+}
+func (m *DownloadRq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DownloadRq.Merge(m, src)
+}
+func (m *DownloadRq) XXX_Size() int {
+	return xxx_messageInfo_DownloadRq.Size(m)
+}
+func (m *DownloadRq) XXX_DiscardUnknown() {
+	xxx_messageInfo_DownloadRq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DownloadRq proto.InternalMessageInfo
+
+func (m *DownloadRq) GetHandler() string {
+	if m != nil {
+		return m.Handler
+	}
+	return ""
+}
+
+func (m *DownloadRq) GetModelFile() string {
+	if m != nil {
+		return m.ModelFile
+	}
+	return ""
+}
+
+type DownloadResp struct {
+	Bytes                []byte   `protobuf:"bytes,1,opt,name=bytes,proto3" json:"bytes,omitempty"`
+	Filename             string   `protobuf:"bytes,2,opt,name=filename,proto3" json:"filename,omitempty"`
+	IsOk                 bool     `protobuf:"varint,3,opt,name=isOk,proto3" json:"isOk,omitempty"`
+	ErrMsg               string   `protobuf:"bytes,4,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *DownloadResp) Reset()         { *m = DownloadResp{} }
+func (m *DownloadResp) String() string { return proto.CompactTextString(m) }
+func (*DownloadResp) ProtoMessage()    {}
+func (*DownloadResp) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e8873c4c109c555c, []int{13}
+}
+
+func (m *DownloadResp) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DownloadResp.Unmarshal(m, b)
+}
+func (m *DownloadResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DownloadResp.Marshal(b, m, deterministic)
+}
+func (m *DownloadResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DownloadResp.Merge(m, src)
+}
+func (m *DownloadResp) XXX_Size() int {
+	return xxx_messageInfo_DownloadResp.Size(m)
+}
+func (m *DownloadResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_DownloadResp.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DownloadResp proto.InternalMessageInfo
+
+func (m *DownloadResp) GetBytes() []byte {
+	if m != nil {
+		return m.Bytes
+	}
+	return nil
+}
+
+func (m *DownloadResp) GetFilename() string {
+	if m != nil {
+		return m.Filename
+	}
+	return ""
+}
+
+func (m *DownloadResp) GetIsOk() bool {
+	if m != nil {
+		return m.IsOk
+	}
+	return false
+}
+
+func (m *DownloadResp) GetErrMsg() string {
+	if m != nil {
+		return m.ErrMsg
+	}
+	return ""
+}
+
 type ListResp struct {
 	Filename             []string `protobuf:"bytes,1,rep,name=filename,proto3" json:"filename,omitempty"`
 	IsOk                 bool     `protobuf:"varint,2,opt,name=isOk,proto3" json:"isOk,omitempty"`
@@ -769,7 +879,7 @@ func (m *ListResp) Reset()         { *m = ListResp{} }
 func (m *ListResp) String() string { return proto.CompactTextString(m) }
 func (*ListResp) ProtoMessage()    {}
 func (*ListResp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_e8873c4c109c555c, []int{12}
+	return fileDescriptor_e8873c4c109c555c, []int{14}
 }
 
 func (m *ListResp) XXX_Unmarshal(b []byte) error {
@@ -823,7 +933,7 @@ func (m *SetSetValuesRq) Reset()         { *m = SetSetValuesRq{} }
 func (m *SetSetValuesRq) String() string { return proto.CompactTextString(m) }
 func (*SetSetValuesRq) ProtoMessage()    {}
 func (*SetSetValuesRq) Descriptor() ([]byte, []int) {
-	return fileDescriptor_e8873c4c109c555c, []int{13}
+	return fileDescriptor_e8873c4c109c555c, []int{15}
 }
 
 func (m *SetSetValuesRq) XXX_Unmarshal(b []byte) error {
@@ -871,7 +981,7 @@ func (m *OpenRq) Reset()         { *m = OpenRq{} }
 func (m *OpenRq) String() string { return proto.CompactTextString(m) }
 func (*OpenRq) ProtoMessage()    {}
 func (*OpenRq) Descriptor() ([]byte, []int) {
-	return fileDescriptor_e8873c4c109c555c, []int{14}
+	return fileDescriptor_e8873c4c109c555c, []int{16}
 }
 
 func (m *OpenRq) XXX_Unmarshal(b []byte) error {
@@ -926,7 +1036,7 @@ func (m *ExcelSheet) Reset()         { *m = ExcelSheet{} }
 func (m *ExcelSheet) String() string { return proto.CompactTextString(m) }
 func (*ExcelSheet) ProtoMessage()    {}
 func (*ExcelSheet) Descriptor() ([]byte, []int) {
-	return fileDescriptor_e8873c4c109c555c, []int{15}
+	return fileDescriptor_e8873c4c109c555c, []int{17}
 }
 
 func (m *ExcelSheet) XXX_Unmarshal(b []byte) error {
@@ -982,7 +1092,7 @@ func (m *OpenResp) Reset()         { *m = OpenResp{} }
 func (m *OpenResp) String() string { return proto.CompactTextString(m) }
 func (*OpenResp) ProtoMessage()    {}
 func (*OpenResp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_e8873c4c109c555c, []int{16}
+	return fileDescriptor_e8873c4c109c555c, []int{18}
 }
 
 func (m *OpenResp) XXX_Unmarshal(b []byte) error {
@@ -1043,7 +1153,7 @@ func (m *MacroNameRq) Reset()         { *m = MacroNameRq{} }
 func (m *MacroNameRq) String() string { return proto.CompactTextString(m) }
 func (*MacroNameRq) ProtoMessage()    {}
 func (*MacroNameRq) Descriptor() ([]byte, []int) {
-	return fileDescriptor_e8873c4c109c555c, []int{17}
+	return fileDescriptor_e8873c4c109c555c, []int{19}
 }
 
 func (m *MacroNameRq) XXX_Unmarshal(b []byte) error {
@@ -1090,7 +1200,7 @@ func (m *ListMacrosRq) Reset()         { *m = ListMacrosRq{} }
 func (m *ListMacrosRq) String() string { return proto.CompactTextString(m) }
 func (*ListMacrosRq) ProtoMessage()    {}
 func (*ListMacrosRq) Descriptor() ([]byte, []int) {
-	return fileDescriptor_e8873c4c109c555c, []int{18}
+	return fileDescriptor_e8873c4c109c555c, []int{20}
 }
 
 func (m *ListMacrosRq) XXX_Unmarshal(b []byte) error {
@@ -1138,7 +1248,7 @@ func (m *ListMacrosResp) Reset()         { *m = ListMacrosResp{} }
 func (m *ListMacrosResp) String() string { return proto.CompactTextString(m) }
 func (*ListMacrosResp) ProtoMessage()    {}
 func (*ListMacrosResp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_e8873c4c109c555c, []int{19}
+	return fileDescriptor_e8873c4c109c555c, []int{21}
 }
 
 func (m *ListMacrosResp) XXX_Unmarshal(b []byte) error {
@@ -1192,7 +1302,7 @@ func (m *StatusResp) Reset()         { *m = StatusResp{} }
 func (m *StatusResp) String() string { return proto.CompactTextString(m) }
 func (*StatusResp) ProtoMessage()    {}
 func (*StatusResp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_e8873c4c109c555c, []int{20}
+	return fileDescriptor_e8873c4c109c555c, []int{22}
 }
 
 func (m *StatusResp) XXX_Unmarshal(b []byte) error {
@@ -1227,6 +1337,329 @@ func (m *StatusResp) GetErrMsg() string {
 	return ""
 }
 
+type VMData struct {
+	InScaleSet           bool      `protobuf:"varint,1,opt,name=inScaleSet,proto3" json:"inScaleSet,omitempty"`
+	VmName               string    `protobuf:"bytes,2,opt,name=vmName,proto3" json:"vmName,omitempty"`
+	VmIP                 []string  `protobuf:"bytes,3,rep,name=vmIP,proto3" json:"vmIP,omitempty"`
+	Status               int32     `protobuf:"varint,4,opt,name=status,proto3" json:"status,omitempty"`
+	Datetime             *DateTime `protobuf:"bytes,5,opt,name=datetime,proto3" json:"datetime,omitempty"`
+	Cpu                  float32   `protobuf:"fixed32,6,opt,name=cpu,proto3" json:"cpu,omitempty"`
+	ErrMsg               string    `protobuf:"bytes,7,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
+}
+
+func (m *VMData) Reset()         { *m = VMData{} }
+func (m *VMData) String() string { return proto.CompactTextString(m) }
+func (*VMData) ProtoMessage()    {}
+func (*VMData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e8873c4c109c555c, []int{23}
+}
+
+func (m *VMData) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_VMData.Unmarshal(m, b)
+}
+func (m *VMData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_VMData.Marshal(b, m, deterministic)
+}
+func (m *VMData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_VMData.Merge(m, src)
+}
+func (m *VMData) XXX_Size() int {
+	return xxx_messageInfo_VMData.Size(m)
+}
+func (m *VMData) XXX_DiscardUnknown() {
+	xxx_messageInfo_VMData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_VMData proto.InternalMessageInfo
+
+func (m *VMData) GetInScaleSet() bool {
+	if m != nil {
+		return m.InScaleSet
+	}
+	return false
+}
+
+func (m *VMData) GetVmName() string {
+	if m != nil {
+		return m.VmName
+	}
+	return ""
+}
+
+func (m *VMData) GetVmIP() []string {
+	if m != nil {
+		return m.VmIP
+	}
+	return nil
+}
+
+func (m *VMData) GetStatus() int32 {
+	if m != nil {
+		return m.Status
+	}
+	return 0
+}
+
+func (m *VMData) GetDatetime() *DateTime {
+	if m != nil {
+		return m.Datetime
+	}
+	return nil
+}
+
+func (m *VMData) GetCpu() float32 {
+	if m != nil {
+		return m.Cpu
+	}
+	return 0
+}
+
+func (m *VMData) GetErrMsg() string {
+	if m != nil {
+		return m.ErrMsg
+	}
+	return ""
+}
+
+type ListVMResp struct {
+	VmData               []*VMData `protobuf:"bytes,1,rep,name=vmData,proto3" json:"vmData,omitempty"`
+	IsOk                 bool      `protobuf:"varint,2,opt,name=isOk,proto3" json:"isOk,omitempty"`
+	ErrMsg               string    `protobuf:"bytes,3,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
+}
+
+func (m *ListVMResp) Reset()         { *m = ListVMResp{} }
+func (m *ListVMResp) String() string { return proto.CompactTextString(m) }
+func (*ListVMResp) ProtoMessage()    {}
+func (*ListVMResp) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e8873c4c109c555c, []int{24}
+}
+
+func (m *ListVMResp) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ListVMResp.Unmarshal(m, b)
+}
+func (m *ListVMResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ListVMResp.Marshal(b, m, deterministic)
+}
+func (m *ListVMResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ListVMResp.Merge(m, src)
+}
+func (m *ListVMResp) XXX_Size() int {
+	return xxx_messageInfo_ListVMResp.Size(m)
+}
+func (m *ListVMResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_ListVMResp.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ListVMResp proto.InternalMessageInfo
+
+func (m *ListVMResp) GetVmData() []*VMData {
+	if m != nil {
+		return m.VmData
+	}
+	return nil
+}
+
+func (m *ListVMResp) GetIsOk() bool {
+	if m != nil {
+		return m.IsOk
+	}
+	return false
+}
+
+func (m *ListVMResp) GetErrMsg() string {
+	if m != nil {
+		return m.ErrMsg
+	}
+	return ""
+}
+
+type ScaleRq struct {
+	NumberOfVM           int32    `protobuf:"varint,1,opt,name=numberOfVM,proto3" json:"numberOfVM,omitempty"`
+	IsOk                 bool     `protobuf:"varint,2,opt,name=isOk,proto3" json:"isOk,omitempty"`
+	ErrMsg               string   `protobuf:"bytes,3,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ScaleRq) Reset()         { *m = ScaleRq{} }
+func (m *ScaleRq) String() string { return proto.CompactTextString(m) }
+func (*ScaleRq) ProtoMessage()    {}
+func (*ScaleRq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e8873c4c109c555c, []int{25}
+}
+
+func (m *ScaleRq) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ScaleRq.Unmarshal(m, b)
+}
+func (m *ScaleRq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ScaleRq.Marshal(b, m, deterministic)
+}
+func (m *ScaleRq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ScaleRq.Merge(m, src)
+}
+func (m *ScaleRq) XXX_Size() int {
+	return xxx_messageInfo_ScaleRq.Size(m)
+}
+func (m *ScaleRq) XXX_DiscardUnknown() {
+	xxx_messageInfo_ScaleRq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ScaleRq proto.InternalMessageInfo
+
+func (m *ScaleRq) GetNumberOfVM() int32 {
+	if m != nil {
+		return m.NumberOfVM
+	}
+	return 0
+}
+
+func (m *ScaleRq) GetIsOk() bool {
+	if m != nil {
+		return m.IsOk
+	}
+	return false
+}
+
+func (m *ScaleRq) GetErrMsg() string {
+	if m != nil {
+		return m.ErrMsg
+	}
+	return ""
+}
+
+type ReportingRq struct {
+	VmName                 string    `protobuf:"bytes,1,opt,name=vmName,proto3" json:"vmName,omitempty"`
+	NBInstanceRunning      int32     `protobuf:"varint,2,opt,name=NBInstanceRunning,proto3" json:"NBInstanceRunning,omitempty"`
+	NBInstanceCreatedToday int32     `protobuf:"varint,3,opt,name=NBInstanceCreatedToday,proto3" json:"NBInstanceCreatedToday,omitempty"`
+	DateTime               *DateTime `protobuf:"bytes,4,opt,name=DateTime,proto3" json:"DateTime,omitempty"`
+	Started                *DateTime `protobuf:"bytes,5,opt,name=Started,proto3" json:"Started,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{}  `json:"-"`
+	XXX_unrecognized       []byte    `json:"-"`
+	XXX_sizecache          int32     `json:"-"`
+}
+
+func (m *ReportingRq) Reset()         { *m = ReportingRq{} }
+func (m *ReportingRq) String() string { return proto.CompactTextString(m) }
+func (*ReportingRq) ProtoMessage()    {}
+func (*ReportingRq) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e8873c4c109c555c, []int{26}
+}
+
+func (m *ReportingRq) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReportingRq.Unmarshal(m, b)
+}
+func (m *ReportingRq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReportingRq.Marshal(b, m, deterministic)
+}
+func (m *ReportingRq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReportingRq.Merge(m, src)
+}
+func (m *ReportingRq) XXX_Size() int {
+	return xxx_messageInfo_ReportingRq.Size(m)
+}
+func (m *ReportingRq) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReportingRq.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReportingRq proto.InternalMessageInfo
+
+func (m *ReportingRq) GetVmName() string {
+	if m != nil {
+		return m.VmName
+	}
+	return ""
+}
+
+func (m *ReportingRq) GetNBInstanceRunning() int32 {
+	if m != nil {
+		return m.NBInstanceRunning
+	}
+	return 0
+}
+
+func (m *ReportingRq) GetNBInstanceCreatedToday() int32 {
+	if m != nil {
+		return m.NBInstanceCreatedToday
+	}
+	return 0
+}
+
+func (m *ReportingRq) GetDateTime() *DateTime {
+	if m != nil {
+		return m.DateTime
+	}
+	return nil
+}
+
+func (m *ReportingRq) GetStarted() *DateTime {
+	if m != nil {
+		return m.Started
+	}
+	return nil
+}
+
+type ReportingResp struct {
+	ReportingVM          []*ReportingRq `protobuf:"bytes,1,rep,name=reportingVM,proto3" json:"reportingVM,omitempty"`
+	IsOk                 bool           `protobuf:"varint,2,opt,name=isOk,proto3" json:"isOk,omitempty"`
+	ErrMsg               string         `protobuf:"bytes,3,opt,name=errMsg,proto3" json:"errMsg,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
+}
+
+func (m *ReportingResp) Reset()         { *m = ReportingResp{} }
+func (m *ReportingResp) String() string { return proto.CompactTextString(m) }
+func (*ReportingResp) ProtoMessage()    {}
+func (*ReportingResp) Descriptor() ([]byte, []int) {
+	return fileDescriptor_e8873c4c109c555c, []int{27}
+}
+
+func (m *ReportingResp) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReportingResp.Unmarshal(m, b)
+}
+func (m *ReportingResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReportingResp.Marshal(b, m, deterministic)
+}
+func (m *ReportingResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReportingResp.Merge(m, src)
+}
+func (m *ReportingResp) XXX_Size() int {
+	return xxx_messageInfo_ReportingResp.Size(m)
+}
+func (m *ReportingResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReportingResp.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReportingResp proto.InternalMessageInfo
+
+func (m *ReportingResp) GetReportingVM() []*ReportingRq {
+	if m != nil {
+		return m.ReportingVM
+	}
+	return nil
+}
+
+func (m *ReportingResp) GetIsOk() bool {
+	if m != nil {
+		return m.IsOk
+	}
+	return false
+}
+
+func (m *ReportingResp) GetErrMsg() string {
+	if m != nil {
+		return m.ErrMsg
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterEnum("grpcexcel.OneCellValue_ValueType", OneCellValue_ValueType_name, OneCellValue_ValueType_value)
 	proto.RegisterType((*Empty)(nil), "grpcexcel.Empty")
@@ -1241,6 +1674,8 @@ func init() {
 	proto.RegisterType((*GetRangesRq)(nil), "grpcexcel.GetRangesRq")
 	proto.RegisterType((*UploadRq)(nil), "grpcexcel.UploadRq")
 	proto.RegisterType((*UploadResp)(nil), "grpcexcel.UploadResp")
+	proto.RegisterType((*DownloadRq)(nil), "grpcexcel.DownloadRq")
+	proto.RegisterType((*DownloadResp)(nil), "grpcexcel.DownloadResp")
 	proto.RegisterType((*ListResp)(nil), "grpcexcel.ListResp")
 	proto.RegisterType((*SetSetValuesRq)(nil), "grpcexcel.SetSetValuesRq")
 	proto.RegisterType((*OpenRq)(nil), "grpcexcel.OpenRq")
@@ -1250,93 +1685,122 @@ func init() {
 	proto.RegisterType((*ListMacrosRq)(nil), "grpcexcel.ListMacrosRq")
 	proto.RegisterType((*ListMacrosResp)(nil), "grpcexcel.ListMacrosResp")
 	proto.RegisterType((*StatusResp)(nil), "grpcexcel.StatusResp")
+	proto.RegisterType((*VMData)(nil), "grpcexcel.VMData")
+	proto.RegisterType((*ListVMResp)(nil), "grpcexcel.ListVMResp")
+	proto.RegisterType((*ScaleRq)(nil), "grpcexcel.ScaleRq")
+	proto.RegisterType((*ReportingRq)(nil), "grpcexcel.ReportingRq")
+	proto.RegisterType((*ReportingResp)(nil), "grpcexcel.ReportingResp")
 }
 
 func init() { proto.RegisterFile("proto/grpcexcel.proto", fileDescriptor_e8873c4c109c555c) }
 
 var fileDescriptor_e8873c4c109c555c = []byte{
-	// 984 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x56, 0x51, 0x6f, 0xe2, 0x46,
-	0x10, 0xae, 0xc1, 0x80, 0x3d, 0xd0, 0x94, 0x6e, 0x93, 0x3b, 0x8a, 0xaa, 0x53, 0xea, 0xa7, 0x48,
-	0xa7, 0x70, 0x52, 0x7a, 0x55, 0x5b, 0x55, 0xf7, 0x90, 0x10, 0xca, 0x21, 0x41, 0x38, 0x2d, 0xe4,
-	0xa4, 0xaa, 0x55, 0x25, 0x07, 0xf6, 0xc0, 0x3a, 0x63, 0x13, 0x7b, 0xc9, 0x1d, 0x7d, 0xb9, 0xf7,
-	0xfe, 0x94, 0xfe, 0x8e, 0xfe, 0x81, 0xfe, 0xa3, 0x6a, 0xc6, 0x6b, 0xbc, 0x26, 0x09, 0xba, 0x54,
-	0x95, 0xfa, 0x82, 0xf6, 0x1b, 0xcf, 0xec, 0x7c, 0xfb, 0xcd, 0xcc, 0x2e, 0x70, 0xb0, 0x8c, 0x42,
-	0x19, 0x3e, 0x9b, 0x45, 0xcb, 0x89, 0x78, 0x3f, 0x11, 0x7e, 0x8b, 0x30, 0xb3, 0x37, 0x06, 0xa7,
-	0x02, 0xa5, 0xce, 0x62, 0x29, 0xd7, 0xce, 0x1f, 0x06, 0x58, 0xe7, 0xae, 0x14, 0x63, 0x6f, 0x21,
-	0x18, 0x03, 0x73, 0x2d, 0xdc, 0xa8, 0x51, 0x38, 0x34, 0x8e, 0x4a, 0x9c, 0xd6, 0x6c, 0x1f, 0x4a,
-	0x8b, 0x30, 0x90, 0xf3, 0x46, 0x91, 0x8c, 0x09, 0x60, 0x75, 0x28, 0x4e, 0xdd, 0x75, 0xc3, 0x24,
-	0x1b, 0x2e, 0x31, 0x76, 0x1e, 0xae, 0xa2, 0x46, 0x29, 0x89, 0xc5, 0x35, 0x7b, 0x04, 0xe5, 0x85,
-	0x17, 0xac, 0xa4, 0x68, 0x94, 0xc9, 0xaa, 0x10, 0xda, 0x63, 0x31, 0x09, 0x83, 0x69, 0xa3, 0x92,
-	0xd8, 0x13, 0xe4, 0xbc, 0x00, 0xfb, 0xa5, 0x1b, 0x4c, 0x7d, 0x11, 0xf1, 0x6b, 0xd6, 0x80, 0xca,
-	0x3c, 0x01, 0x0d, 0xe3, 0xd0, 0x38, 0xb2, 0x79, 0x0a, 0x29, 0xdc, 0xbd, 0x11, 0x3d, 0x49, 0x44,
-	0x2d, 0xae, 0x90, 0xf3, 0x77, 0x01, 0x6a, 0xc3, 0x40, 0xb4, 0x85, 0xef, 0xbf, 0x76, 0xfd, 0x95,
-	0x60, 0xdf, 0x82, 0x29, 0xd7, 0x4b, 0x41, 0xf1, 0x7b, 0x27, 0x5f, 0xb7, 0x32, 0x41, 0x74, 0xb7,
-	0x16, 0xfd, 0x8e, 0xd7, 0x4b, 0xc1, 0xc9, 0x9d, 0x7d, 0x05, 0xf6, 0x34, 0x5c, 0x5d, 0xf9, 0xe2,
-	0xb5, 0xeb, 0x53, 0x0a, 0x83, 0x67, 0x06, 0xca, 0x2e, 0x23, 0xfc, 0x54, 0x24, 0x5a, 0x0a, 0xb1,
-	0x63, 0xa8, 0x4c, 0x5d, 0x49, 0x31, 0x28, 0x4b, 0xf5, 0xe4, 0x0b, 0x2d, 0x5f, 0x2a, 0x31, 0x4f,
-	0x7d, 0xf0, 0x78, 0x57, 0x61, 0x88, 0x0c, 0x48, 0x32, 0x8b, 0xa7, 0x10, 0x13, 0x78, 0x81, 0xc4,
-	0x0f, 0xa8, 0x5a, 0x91, 0x2b, 0x84, 0xf6, 0x37, 0x61, 0xb4, 0x70, 0x25, 0xa9, 0x66, 0x73, 0x85,
-	0x9c, 0x5f, 0xc0, 0xde, 0x9c, 0x80, 0x59, 0x60, 0x5e, 0x5c, 0xf6, 0xfb, 0xf5, 0x4f, 0x18, 0x40,
-	0x79, 0x34, 0xe6, 0xbd, 0x8b, 0x6e, 0xdd, 0x60, 0x35, 0xb0, 0xce, 0x4f, 0xc7, 0x9d, 0x71, 0x6f,
-	0xd0, 0xa9, 0x17, 0x58, 0x15, 0x2a, 0xe7, 0x9d, 0x76, 0x6f, 0x70, 0xda, 0xaf, 0x17, 0x31, 0xe0,
-	0x6c, 0x38, 0xec, 0xd7, 0x4d, 0x56, 0x81, 0x62, 0xef, 0x62, 0x5c, 0x2f, 0x61, 0xe4, 0xf9, 0xf0,
-	0xf2, 0xac, 0xdf, 0xa9, 0x97, 0x9d, 0xb7, 0x00, 0x17, 0xee, 0x42, 0x4c, 0xb9, 0x1b, 0xcc, 0xa8,
-	0x41, 0x02, 0x77, 0x21, 0x54, 0x41, 0x68, 0xcd, 0x9e, 0x82, 0x79, 0xe3, 0xfa, 0x71, 0xa3, 0x70,
-	0x58, 0x3c, 0xaa, 0x9e, 0x3c, 0xbe, 0x47, 0x64, 0x4e, 0x4e, 0x28, 0xed, 0x24, 0x5c, 0x05, 0xb2,
-	0x1d, 0xfa, 0xb1, 0xea, 0xa8, 0xcc, 0xe0, 0x7c, 0x80, 0x3d, 0x4a, 0x86, 0x51, 0x31, 0x17, 0xf1,
-	0x12, 0xbb, 0xaf, 0x8d, 0x9f, 0x29, 0x63, 0x89, 0x27, 0x80, 0x3d, 0x85, 0x12, 0xa6, 0x4e, 0x73,
-	0x1e, 0x68, 0x39, 0x33, 0xb2, 0x3c, 0xf1, 0x41, 0xce, 0x5e, 0x3c, 0x7c, 0x4b, 0xd9, 0x2c, 0x4e,
-	0x6b, 0x94, 0x52, 0x44, 0xd1, 0x20, 0x9e, 0x51, 0xa9, 0x6c, 0xae, 0x90, 0xf3, 0x3b, 0xd8, 0xff,
-	0x5b, 0xee, 0x53, 0xf8, 0xac, 0x2b, 0xa4, 0x76, 0xfe, 0x5d, 0x23, 0xb0, 0xaf, 0xb3, 0xb0, 0x55,
-	0x3a, 0x67, 0x0a, 0xd0, 0x15, 0xf2, 0xa3, 0xa2, 0xe3, 0xb9, 0x10, 0xc9, 0xfc, 0xd8, 0x3c, 0x01,
-	0x68, 0xbd, 0x12, 0x33, 0x2f, 0x50, 0x7d, 0x9d, 0x00, 0x9c, 0x74, 0x11, 0x4c, 0x15, 0x57, 0x5c,
-	0x3a, 0x23, 0xa8, 0x76, 0x85, 0xa4, 0x73, 0xfe, 0xcb, 0x34, 0x09, 0xf5, 0xa2, 0x4e, 0xfd, 0x39,
-	0x58, 0x97, 0x4b, 0x3f, 0x74, 0xa7, 0xfc, 0xfa, 0xce, 0x2e, 0x43, 0x72, 0x6b, 0x49, 0x07, 0x36,
-	0x8e, 0x6a, 0x3c, 0x01, 0x0e, 0x07, 0x50, 0x51, 0x58, 0xb0, 0xfb, 0x99, 0xa4, 0x75, 0x28, 0xdc,
-	0x59, 0x87, 0x62, 0xae, 0x0e, 0x1c, 0xac, 0xbe, 0x17, 0x4b, 0xda, 0xb1, 0x09, 0xd6, 0x1b, 0xcf,
-	0x17, 0x8a, 0x0d, 0xd2, 0xdd, 0xe0, 0x07, 0xed, 0xf9, 0x33, 0xec, 0x8d, 0x84, 0x1c, 0x09, 0x49,
-	0xb3, 0xb0, 0x5b, 0xb5, 0x63, 0x28, 0x47, 0xa4, 0xed, 0xee, 0x0e, 0x53, 0x4e, 0xce, 0x6f, 0x50,
-	0x1e, 0x2e, 0x45, 0xc0, 0xaf, 0xb7, 0xc8, 0x1a, 0x39, 0xb2, 0x5a, 0xba, 0x42, 0x3e, 0xdd, 0x13,
-	0x80, 0x77, 0x9e, 0x9c, 0x8f, 0xb0, 0x36, 0xb1, 0x6a, 0x54, 0xcd, 0xe2, 0xbc, 0x02, 0xe8, 0x60,
-	0x6e, 0x82, 0x77, 0x96, 0x06, 0x6f, 0x79, 0xf7, 0x3d, 0x0f, 0xdf, 0xa9, 0x77, 0x43, 0x21, 0x65,
-	0x6f, 0x87, 0xbe, 0x1a, 0x74, 0x85, 0x9c, 0x0f, 0x60, 0x11, 0xe3, 0xff, 0xac, 0x64, 0x28, 0x59,
-	0x9c, 0xf0, 0x37, 0x6f, 0x49, 0x96, 0x91, 0xe7, 0xca, 0xc9, 0xf9, 0x11, 0xaa, 0x03, 0x77, 0x12,
-	0x85, 0xa8, 0xe6, 0xce, 0x52, 0xa4, 0xa7, 0x2d, 0x64, 0xa7, 0x75, 0x5e, 0x42, 0x0d, 0xdb, 0x83,
-	0x36, 0xd8, 0x5d, 0xc8, 0x27, 0x00, 0x8b, 0x34, 0x4d, 0x3a, 0xa8, 0x9a, 0xc5, 0xf9, 0x15, 0xf6,
-	0xb4, 0x9d, 0x50, 0x8d, 0x7c, 0x84, 0xb1, 0x1d, 0xf1, 0xa0, 0x96, 0xfb, 0x1e, 0x60, 0x24, 0x5d,
-	0xb9, 0x4a, 0x76, 0x4e, 0x23, 0x8d, 0x3b, 0x23, 0x0b, 0x7a, 0xe4, 0xc9, 0x5f, 0x26, 0xd4, 0x12,
-	0xd5, 0x44, 0x74, 0xe3, 0x4d, 0x04, 0x6b, 0x81, 0xf9, 0xca, 0x0b, 0x66, 0x6c, 0x5f, 0x93, 0x75,
-	0xf3, 0x4e, 0x37, 0xeb, 0xba, 0xd8, 0xf8, 0x9f, 0x82, 0x3d, 0x87, 0x72, 0x32, 0x95, 0x4c, 0x7f,
-	0x02, 0xd3, 0xf1, 0x6e, 0x1e, 0xdc, 0x36, 0x22, 0xc5, 0x63, 0x30, 0x51, 0x0e, 0x76, 0x6b, 0xbf,
-	0xa6, 0xbe, 0xcb, 0x66, 0x34, 0x5b, 0x60, 0x62, 0x17, 0xb1, 0xcf, 0xf5, 0x07, 0x87, 0x06, 0x21,
-	0xe7, 0xbf, 0xe9, 0xb4, 0x67, 0x50, 0x6a, 0xfb, 0x61, 0x2c, 0x3e, 0xfa, 0x14, 0x3f, 0xc1, 0xa7,
-	0xb9, 0xfb, 0x98, 0x35, 0x35, 0x97, 0xad, 0x9b, 0xba, 0xf9, 0xe5, 0xf6, 0x90, 0x66, 0xcf, 0xc8,
-	0x77, 0x60, 0xa5, 0x97, 0x32, 0x3b, 0xc8, 0x6f, 0x91, 0x46, 0xeb, 0x94, 0xb2, 0xc0, 0x17, 0x60,
-	0x6f, 0x6e, 0x0c, 0xa6, 0x27, 0xc8, 0x5f, 0x25, 0x39, 0x3d, 0xb5, 0x92, 0xb7, 0x89, 0xff, 0x20,
-	0xeb, 0x9e, 0xc7, 0x5b, 0x32, 0xa6, 0x2d, 0x9c, 0x23, 0xbf, 0xd5, 0x91, 0x3f, 0x80, 0xc5, 0x57,
-	0x01, 0x19, 0xd8, 0x23, 0xcd, 0x4d, 0x9b, 0x9f, 0x7b, 0xf2, 0x9f, 0xd5, 0xfe, 0x2c, 0xd8, 0xdd,
-	0x68, 0x39, 0xa1, 0x56, 0xba, 0x2a, 0xd3, 0x5f, 0xd0, 0x6f, 0xfe, 0x09, 0x00, 0x00, 0xff, 0xff,
-	0x04, 0x6c, 0x2b, 0xd7, 0x9b, 0x0a, 0x00, 0x00,
+	// 1353 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x57, 0x5f, 0x6f, 0x1b, 0x45,
+	0x10, 0xe7, 0xfc, 0xf7, 0x6e, 0xec, 0x06, 0x77, 0xe9, 0x1f, 0x63, 0x55, 0x55, 0xb9, 0xa7, 0xa0,
+	0x92, 0x54, 0x4a, 0x43, 0x29, 0xa0, 0x82, 0x12, 0x3b, 0x75, 0x2d, 0xc5, 0x71, 0xb4, 0x76, 0x2c,
+	0x21, 0x10, 0xd2, 0xc5, 0x9e, 0x3a, 0xa7, 0xde, 0x1f, 0xe7, 0x6e, 0x9d, 0x36, 0xbc, 0xf4, 0x81,
+	0xb7, 0x7e, 0x14, 0xbe, 0x08, 0xcf, 0x7c, 0x0e, 0xbe, 0x04, 0x9a, 0xbd, 0x3d, 0xdf, 0xda, 0x89,
+	0xad, 0x06, 0x21, 0xf1, 0x62, 0xed, 0xcc, 0xed, 0xec, 0xfc, 0xe6, 0x37, 0xb3, 0x33, 0x6b, 0xb8,
+	0x3b, 0x8d, 0x42, 0x11, 0x3e, 0x99, 0x44, 0xd3, 0x11, 0xbe, 0x1b, 0xa1, 0xb7, 0x2d, 0x65, 0x66,
+	0xcd, 0x15, 0x76, 0x19, 0x8a, 0x07, 0xfe, 0x54, 0x5c, 0xda, 0x1f, 0x0c, 0x30, 0x5b, 0x8e, 0xc0,
+	0x81, 0xeb, 0x23, 0x63, 0x50, 0xb8, 0x44, 0x27, 0xaa, 0xe7, 0x1e, 0x19, 0x9b, 0x45, 0x2e, 0xd7,
+	0xec, 0x0e, 0x14, 0xfd, 0x30, 0x10, 0x67, 0xf5, 0xbc, 0x54, 0x26, 0x02, 0xab, 0x41, 0x7e, 0xec,
+	0x5c, 0xd6, 0x0b, 0x52, 0x47, 0x4b, 0xb2, 0x3d, 0x0b, 0x67, 0x51, 0xbd, 0x98, 0xd8, 0xd2, 0x9a,
+	0xdd, 0x83, 0x92, 0xef, 0x06, 0x33, 0x81, 0xf5, 0x92, 0xd4, 0x2a, 0x89, 0xf4, 0x31, 0x8e, 0xc2,
+	0x60, 0x5c, 0x2f, 0x27, 0xfa, 0x44, 0xb2, 0x5f, 0x80, 0xf5, 0xca, 0x09, 0xc6, 0x1e, 0x46, 0xfc,
+	0x9c, 0xd5, 0xa1, 0x7c, 0x96, 0x08, 0x75, 0xe3, 0x91, 0xb1, 0x69, 0xf1, 0x54, 0x94, 0xe6, 0xce,
+	0x05, 0x76, 0x84, 0x04, 0x6a, 0x72, 0x25, 0xd9, 0x7f, 0xe5, 0xa0, 0xda, 0x0b, 0xb0, 0x89, 0x9e,
+	0x37, 0x74, 0xbc, 0x19, 0xb2, 0xaf, 0xa1, 0x20, 0x2e, 0xa7, 0x28, 0xed, 0x37, 0x76, 0xbe, 0xd8,
+	0xce, 0x08, 0xd1, 0xb7, 0x6d, 0xcb, 0xdf, 0xc1, 0xe5, 0x14, 0xb9, 0xdc, 0xce, 0x1e, 0x80, 0x35,
+	0x0e, 0x67, 0xa7, 0x1e, 0x0e, 0x1d, 0x4f, 0xba, 0x30, 0x78, 0xa6, 0x90, 0xde, 0x45, 0x44, 0x9f,
+	0xf2, 0x12, 0x96, 0x92, 0xd8, 0x16, 0x94, 0xc7, 0x8e, 0x90, 0x36, 0x44, 0x4b, 0x65, 0xe7, 0x33,
+	0xcd, 0x5f, 0x4a, 0x31, 0x4f, 0xf7, 0x50, 0x78, 0xa7, 0x61, 0x48, 0x08, 0x24, 0x65, 0x26, 0x4f,
+	0x45, 0x72, 0xe0, 0x06, 0x82, 0x3e, 0x10, 0x6b, 0x79, 0xae, 0x24, 0xd2, 0xbf, 0x0e, 0x23, 0xdf,
+	0x11, 0x92, 0x35, 0x8b, 0x2b, 0xc9, 0xfe, 0x19, 0xac, 0x79, 0x04, 0xcc, 0x84, 0xc2, 0xd1, 0xc9,
+	0xe1, 0x61, 0xed, 0x13, 0x06, 0x50, 0xea, 0x0f, 0x78, 0xe7, 0xa8, 0x5d, 0x33, 0x58, 0x15, 0xcc,
+	0xd6, 0xde, 0xe0, 0x60, 0xd0, 0xe9, 0x1e, 0xd4, 0x72, 0xac, 0x02, 0xe5, 0xd6, 0x41, 0xb3, 0xd3,
+	0xdd, 0x3b, 0xac, 0xe5, 0xc9, 0x60, 0xbf, 0xd7, 0x3b, 0xac, 0x15, 0x58, 0x19, 0xf2, 0x9d, 0xa3,
+	0x41, 0xad, 0x48, 0x96, 0xad, 0xde, 0xc9, 0xfe, 0xe1, 0x41, 0xad, 0x64, 0xbf, 0x01, 0x38, 0x72,
+	0x7c, 0x1c, 0x73, 0x27, 0x98, 0xc8, 0x02, 0x09, 0x1c, 0x1f, 0x55, 0x42, 0xe4, 0x9a, 0x3d, 0x86,
+	0xc2, 0x85, 0xe3, 0xc5, 0xf5, 0xdc, 0xa3, 0xfc, 0x66, 0x65, 0xe7, 0xfe, 0x0a, 0x92, 0xb9, 0xdc,
+	0x44, 0xd4, 0x8e, 0xc2, 0x59, 0x20, 0x9a, 0xa1, 0x17, 0xab, 0x8a, 0xca, 0x14, 0xf6, 0x7b, 0xd8,
+	0x90, 0xce, 0xc8, 0x2a, 0xe6, 0x18, 0x4f, 0xa9, 0xfa, 0x9a, 0xf4, 0x59, 0x7a, 0x2c, 0xf2, 0x44,
+	0x60, 0x8f, 0xa1, 0x48, 0xae, 0x53, 0x9f, 0x77, 0x35, 0x9f, 0x19, 0x58, 0x9e, 0xec, 0x21, 0xcc,
+	0x6e, 0xdc, 0x7b, 0x23, 0xbd, 0x99, 0x5c, 0xae, 0x89, 0x4a, 0x8c, 0xa2, 0x6e, 0x3c, 0x91, 0xa9,
+	0xb2, 0xb8, 0x92, 0xec, 0xdf, 0xc0, 0xfa, 0xdf, 0x7c, 0xef, 0xc1, 0xa7, 0x6d, 0x14, 0x5a, 0xfc,
+	0xeb, 0xae, 0xc0, 0x1d, 0x1d, 0x85, 0xa5, 0xdc, 0xd9, 0x63, 0x80, 0x36, 0x8a, 0x8f, 0xb2, 0x8e,
+	0xcf, 0x10, 0x93, 0xfb, 0x63, 0xf1, 0x44, 0x20, 0xed, 0x29, 0x4e, 0xdc, 0x40, 0xd5, 0x75, 0x22,
+	0xd0, 0x4d, 0xc7, 0x60, 0xac, 0xb0, 0xd2, 0xd2, 0xee, 0x43, 0xa5, 0x8d, 0x42, 0xc6, 0xf9, 0x2f,
+	0xdd, 0x24, 0xd0, 0xf3, 0x3a, 0xf4, 0x5d, 0x30, 0x4f, 0xa6, 0x5e, 0xe8, 0x8c, 0xf9, 0xf9, 0xb5,
+	0x55, 0x46, 0xe0, 0x2e, 0x85, 0x0c, 0xd8, 0xd8, 0xac, 0xf2, 0x44, 0xb0, 0x39, 0x80, 0xb2, 0xa2,
+	0x84, 0xad, 0x46, 0x92, 0xe6, 0x21, 0x77, 0x6d, 0x1e, 0xf2, 0x0b, 0x79, 0x68, 0x01, 0xb4, 0xc2,
+	0xb7, 0x81, 0xc2, 0xb2, 0xfa, 0xcc, 0x07, 0x60, 0xf9, 0xe1, 0x18, 0xbd, 0x97, 0xae, 0x87, 0x2a,
+	0xc2, 0x4c, 0x61, 0x7b, 0x50, 0x9d, 0x9f, 0xa2, 0x8a, 0x29, 0xc1, 0x6f, 0x68, 0xf8, 0x59, 0x03,
+	0xcc, 0xd7, 0xae, 0x87, 0x32, 0xda, 0xe4, 0x88, 0xb9, 0x7c, 0xa3, 0xda, 0xe1, 0x60, 0x1e, 0xba,
+	0xb1, 0x90, 0x9e, 0xf4, 0x33, 0x0d, 0x49, 0xf1, 0xd5, 0x33, 0x3f, 0x86, 0x87, 0x9f, 0x60, 0xa3,
+	0x8f, 0xa2, 0x8f, 0x42, 0xde, 0xdf, 0xf5, 0x99, 0xde, 0x82, 0x52, 0x24, 0xeb, 0x61, 0xfd, 0xad,
+	0x50, 0x9b, 0xec, 0x5f, 0xa1, 0xd4, 0x9b, 0x62, 0xc0, 0xcf, 0x97, 0xc0, 0x2e, 0x12, 0xa0, 0xb9,
+	0xcb, 0x2d, 0xba, 0x7b, 0x08, 0xf0, 0xd6, 0x15, 0x67, 0x7d, 0xaa, 0xa7, 0x58, 0x11, 0xa4, 0x69,
+	0xec, 0x63, 0x80, 0x03, 0xf2, 0x2d, 0xc5, 0x6b, 0xcb, 0x89, 0x26, 0x93, 0xf3, 0x8e, 0x87, 0x6f,
+	0xd5, 0xac, 0x53, 0x92, 0xd2, 0x37, 0x43, 0x4f, 0x35, 0x27, 0x25, 0xd9, 0xef, 0xc1, 0x94, 0x88,
+	0xff, 0xb3, 0x32, 0x23, 0xca, 0xe2, 0x04, 0x7f, 0xe1, 0x0a, 0x65, 0x19, 0x78, 0xae, 0x36, 0xd9,
+	0xdf, 0x43, 0xa5, 0xeb, 0x8c, 0xa2, 0x90, 0xd8, 0x5c, 0x9b, 0x8a, 0x34, 0xda, 0x5c, 0x16, 0xad,
+	0xfd, 0x0a, 0xaa, 0x54, 0x1e, 0xf2, 0x80, 0xf5, 0x89, 0x7c, 0x08, 0xe0, 0xa7, 0x6e, 0xd2, 0xe6,
+	0xa2, 0x69, 0xec, 0x5f, 0x60, 0x43, 0x3b, 0x89, 0xd8, 0x58, 0xb4, 0x30, 0x96, 0x2d, 0x6e, 0x54,
+	0x72, 0xcf, 0x01, 0xfa, 0xc2, 0x11, 0xb3, 0xe4, 0xe4, 0xd4, 0xd2, 0xb8, 0xd6, 0x32, 0xb7, 0x60,
+	0xf9, 0xa7, 0x01, 0xa5, 0x61, 0xb7, 0xe5, 0x08, 0x87, 0x00, 0xb9, 0x41, 0x7f, 0xe4, 0x78, 0xd8,
+	0x47, 0xa1, 0x8c, 0x35, 0x0d, 0x1d, 0x71, 0xe1, 0x1f, 0x65, 0x14, 0x29, 0x89, 0xdc, 0x5d, 0xf8,
+	0x9d, 0x63, 0xd5, 0x96, 0xe4, 0x3a, 0x99, 0xf5, 0x04, 0x48, 0xbd, 0x74, 0x94, 0xc4, 0x9e, 0x80,
+	0x49, 0x73, 0x5c, 0xb8, 0x3e, 0xca, 0xe9, 0xbd, 0x62, 0xd8, 0xcf, 0x37, 0x51, 0x17, 0x1d, 0x4d,
+	0x67, 0x72, 0xa0, 0xe7, 0x38, 0x2d, 0xb5, 0x48, 0xca, 0x0b, 0x91, 0x8c, 0x00, 0x88, 0xe1, 0x61,
+	0x57, 0x72, 0xf0, 0x25, 0x81, 0xa5, 0xb0, 0x24, 0xb3, 0x95, 0x9d, 0xdb, 0x9a, 0x9b, 0x24, 0x5e,
+	0xae, 0x36, 0xdc, 0x88, 0xe8, 0x13, 0x28, 0x4b, 0x3e, 0xf8, 0x39, 0xd1, 0x15, 0xcc, 0xfc, 0x53,
+	0x8c, 0x7a, 0xaf, 0x87, 0x5d, 0x35, 0xea, 0x34, 0xcd, 0x8d, 0x8e, 0xfd, 0xdb, 0x80, 0x0a, 0xc7,
+	0x69, 0x18, 0x09, 0x37, 0x98, 0xf0, 0x73, 0x8d, 0x6a, 0x63, 0x81, 0xea, 0xaf, 0xe0, 0xf6, 0xd1,
+	0x7e, 0x27, 0x88, 0x85, 0x13, 0x8c, 0x90, 0xcf, 0x82, 0xc0, 0x0d, 0x26, 0xea, 0x22, 0x5e, 0xfd,
+	0xc0, 0x9e, 0xc1, 0xbd, 0x4c, 0xd9, 0x8c, 0xd0, 0x11, 0x38, 0x1e, 0x84, 0xf4, 0xfc, 0x4c, 0xee,
+	0xe8, 0x8a, 0xaf, 0x94, 0xa4, 0x34, 0x13, 0xeb, 0x5e, 0x64, 0xd9, 0xf3, 0x77, 0x0b, 0xca, 0x7d,
+	0xe1, 0x44, 0x02, 0xc7, 0xeb, 0x92, 0x9a, 0xee, 0xb1, 0x67, 0x70, 0x2b, 0x0b, 0x96, 0x92, 0xf5,
+	0x1c, 0x2a, 0x51, 0xaa, 0x90, 0x5c, 0x52, 0xc6, 0xee, 0x69, 0x67, 0x68, 0xdc, 0x70, 0x7d, 0xeb,
+	0x4d, 0x48, 0xde, 0xf9, 0x50, 0x84, 0x6a, 0xd2, 0x20, 0x30, 0xba, 0x70, 0x47, 0xc8, 0x9e, 0x42,
+	0xe1, 0x98, 0x78, 0xba, 0xa3, 0x79, 0x9a, 0x3f, 0xa3, 0x1b, 0x7a, 0x5f, 0xd1, 0x2e, 0xd7, 0x2e,
+	0x94, 0x92, 0xc9, 0xc9, 0xf4, 0x20, 0xd3, 0x11, 0xbc, 0x60, 0xa5, 0x4d, 0xd8, 0xef, 0xc0, 0x4c,
+	0xa7, 0x1a, 0xd3, 0xb7, 0x64, 0x03, 0xb3, 0x71, 0xff, 0x3a, 0x35, 0xd9, 0x6e, 0x41, 0x81, 0x0a,
+	0x9b, 0xd5, 0xf4, 0x46, 0x47, 0xff, 0x41, 0x1a, 0x3a, 0x82, 0xf9, 0x18, 0xdb, 0x86, 0x02, 0x75,
+	0x5c, 0xa6, 0x57, 0x7c, 0x32, 0x34, 0x16, 0xf6, 0xcf, 0xbb, 0xf2, 0x2e, 0x14, 0x9b, 0x5e, 0x18,
+	0xe3, 0xcd, 0x68, 0x78, 0x09, 0xb7, 0x16, 0x1e, 0x5d, 0xac, 0xa1, 0xed, 0x5b, 0x7a, 0x8e, 0x35,
+	0x3e, 0x5f, 0x9e, 0x6a, 0xd9, 0x5b, 0xf1, 0x1b, 0x30, 0xd3, 0x97, 0xd7, 0x02, 0x31, 0xd9, 0x73,
+	0xac, 0xa1, 0xe3, 0xca, 0x0c, 0x5f, 0x80, 0x35, 0x1f, 0xb1, 0x4c, 0x77, 0xb0, 0x38, 0x7b, 0x57,
+	0xe1, 0x6f, 0x4a, 0xfc, 0xdd, 0xac, 0xdd, 0xde, 0x5f, 0xe2, 0x32, 0xed, 0xf9, 0x0b, 0xe0, 0x97,
+	0x5a, 0xf8, 0xb7, 0x60, 0xf2, 0x59, 0x20, 0x15, 0x4c, 0x2f, 0x57, 0x6d, 0xe0, 0xac, 0xf0, 0xbf,
+	0xf3, 0x7b, 0x0e, 0x58, 0xd3, 0x9b, 0xc5, 0x02, 0xa3, 0x36, 0x3f, 0x6e, 0xa6, 0x25, 0xb9, 0x0b,
+	0x56, 0x1b, 0xc5, 0xb0, 0xbb, 0x22, 0xe1, 0x77, 0x97, 0xb0, 0xa8, 0x66, 0xf7, 0x0c, 0x80, 0xe3,
+	0xc4, 0xa5, 0xc3, 0x86, 0x5d, 0x76, 0xb5, 0xd5, 0xad, 0x22, 0xe1, 0x07, 0xb8, 0xd5, 0xc7, 0x60,
+	0x3c, 0xbf, 0x5d, 0x6c, 0xc5, 0x9d, 0x5b, 0x65, 0xff, 0x23, 0xdc, 0x6e, 0xa3, 0xd8, 0xf3, 0xbc,
+	0xa1, 0x9f, 0x9d, 0x71, 0x15, 0x75, 0xfd, 0xda, 0x53, 0x31, 0x9e, 0xee, 0x57, 0xff, 0xc8, 0x59,
+	0xed, 0x68, 0x3a, 0x92, 0xd7, 0xf2, 0xb4, 0x24, 0xff, 0x6d, 0x3f, 0xfd, 0x27, 0x00, 0x00, 0xff,
+	0xff, 0xeb, 0x57, 0x2d, 0xb3, 0x86, 0x0f, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ context.Context
-var _ grpc.ClientConn
+var _ grpc.ClientConnInterface
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
-const _ = grpc.SupportPackageIsVersion4
+const _ = grpc.SupportPackageIsVersion6
 
 // ExcelServiceClient is the client API for ExcelService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ExcelServiceClient interface {
-	Ping(ctx context.Context, in *HandlerRq, opts ...grpc.CallOption) (*Empty, error)
+	Ping(ctx context.Context, in *HandlerRq, opts ...grpc.CallOption) (*StatusResp, error)
 	Upload(ctx context.Context, in *UploadRq, opts ...grpc.CallOption) (*UploadResp, error)
+	Download(ctx context.Context, in *DownloadRq, opts ...grpc.CallOption) (*DownloadResp, error)
 	List(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ListResp, error)
 	Open(ctx context.Context, in *OpenRq, opts ...grpc.CallOption) (*OpenResp, error)
-	Close(ctx context.Context, in *HandlerRq, opts ...grpc.CallOption) (*Empty, error)
+	Close(ctx context.Context, in *HandlerRq, opts ...grpc.CallOption) (*StatusResp, error)
 	GetNamedCells(ctx context.Context, in *GetNamedCellsRq, opts ...grpc.CallOption) (*NamedCellsResp, error)
 	GetCells(ctx context.Context, in *GetCellsRq, opts ...grpc.CallOption) (*CellsResp, error)
 	SetValues(ctx context.Context, in *SetSetValuesRq, opts ...grpc.CallOption) (*StatusResp, error)
@@ -1345,15 +1809,15 @@ type ExcelServiceClient interface {
 }
 
 type excelServiceClient struct {
-	cc *grpc.ClientConn
+	cc grpc.ClientConnInterface
 }
 
-func NewExcelServiceClient(cc *grpc.ClientConn) ExcelServiceClient {
+func NewExcelServiceClient(cc grpc.ClientConnInterface) ExcelServiceClient {
 	return &excelServiceClient{cc}
 }
 
-func (c *excelServiceClient) Ping(ctx context.Context, in *HandlerRq, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *excelServiceClient) Ping(ctx context.Context, in *HandlerRq, opts ...grpc.CallOption) (*StatusResp, error) {
+	out := new(StatusResp)
 	err := c.cc.Invoke(ctx, "/grpcexcel.ExcelService/Ping", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1364,6 +1828,15 @@ func (c *excelServiceClient) Ping(ctx context.Context, in *HandlerRq, opts ...gr
 func (c *excelServiceClient) Upload(ctx context.Context, in *UploadRq, opts ...grpc.CallOption) (*UploadResp, error) {
 	out := new(UploadResp)
 	err := c.cc.Invoke(ctx, "/grpcexcel.ExcelService/Upload", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *excelServiceClient) Download(ctx context.Context, in *DownloadRq, opts ...grpc.CallOption) (*DownloadResp, error) {
+	out := new(DownloadResp)
+	err := c.cc.Invoke(ctx, "/grpcexcel.ExcelService/Download", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1388,8 +1861,8 @@ func (c *excelServiceClient) Open(ctx context.Context, in *OpenRq, opts ...grpc.
 	return out, nil
 }
 
-func (c *excelServiceClient) Close(ctx context.Context, in *HandlerRq, opts ...grpc.CallOption) (*Empty, error) {
-	out := new(Empty)
+func (c *excelServiceClient) Close(ctx context.Context, in *HandlerRq, opts ...grpc.CallOption) (*StatusResp, error) {
+	out := new(StatusResp)
 	err := c.cc.Invoke(ctx, "/grpcexcel.ExcelService/Close", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1444,11 +1917,12 @@ func (c *excelServiceClient) RunMacro(ctx context.Context, in *MacroNameRq, opts
 
 // ExcelServiceServer is the server API for ExcelService service.
 type ExcelServiceServer interface {
-	Ping(context.Context, *HandlerRq) (*Empty, error)
+	Ping(context.Context, *HandlerRq) (*StatusResp, error)
 	Upload(context.Context, *UploadRq) (*UploadResp, error)
+	Download(context.Context, *DownloadRq) (*DownloadResp, error)
 	List(context.Context, *Empty) (*ListResp, error)
 	Open(context.Context, *OpenRq) (*OpenResp, error)
-	Close(context.Context, *HandlerRq) (*Empty, error)
+	Close(context.Context, *HandlerRq) (*StatusResp, error)
 	GetNamedCells(context.Context, *GetNamedCellsRq) (*NamedCellsResp, error)
 	GetCells(context.Context, *GetCellsRq) (*CellsResp, error)
 	SetValues(context.Context, *SetSetValuesRq) (*StatusResp, error)
@@ -1460,11 +1934,14 @@ type ExcelServiceServer interface {
 type UnimplementedExcelServiceServer struct {
 }
 
-func (*UnimplementedExcelServiceServer) Ping(ctx context.Context, req *HandlerRq) (*Empty, error) {
+func (*UnimplementedExcelServiceServer) Ping(ctx context.Context, req *HandlerRq) (*StatusResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
 }
 func (*UnimplementedExcelServiceServer) Upload(ctx context.Context, req *UploadRq) (*UploadResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Upload not implemented")
+}
+func (*UnimplementedExcelServiceServer) Download(ctx context.Context, req *DownloadRq) (*DownloadResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Download not implemented")
 }
 func (*UnimplementedExcelServiceServer) List(ctx context.Context, req *Empty) (*ListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method List not implemented")
@@ -1472,7 +1949,7 @@ func (*UnimplementedExcelServiceServer) List(ctx context.Context, req *Empty) (*
 func (*UnimplementedExcelServiceServer) Open(ctx context.Context, req *OpenRq) (*OpenResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Open not implemented")
 }
-func (*UnimplementedExcelServiceServer) Close(ctx context.Context, req *HandlerRq) (*Empty, error) {
+func (*UnimplementedExcelServiceServer) Close(ctx context.Context, req *HandlerRq) (*StatusResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Close not implemented")
 }
 func (*UnimplementedExcelServiceServer) GetNamedCells(ctx context.Context, req *GetNamedCellsRq) (*NamedCellsResp, error) {
@@ -1527,6 +2004,24 @@ func _ExcelService_Upload_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(ExcelServiceServer).Upload(ctx, req.(*UploadRq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ExcelService_Download_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DownloadRq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ExcelServiceServer).Download(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/grpcexcel.ExcelService/Download",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ExcelServiceServer).Download(ctx, req.(*DownloadRq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1688,6 +2183,10 @@ var _ExcelService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _ExcelService_Upload_Handler,
 		},
 		{
+			MethodName: "Download",
+			Handler:    _ExcelService_Download_Handler,
+		},
+		{
 			MethodName: "List",
 			Handler:    _ExcelService_List_Handler,
 		},
@@ -1718,6 +2217,186 @@ var _ExcelService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RunMacro",
 			Handler:    _ExcelService_RunMacro_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "proto/grpcexcel.proto",
+}
+
+// ClusterGRPCServiceClient is the client API for ClusterGRPCService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
+type ClusterGRPCServiceClient interface {
+	GetVMList(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ListVMResp, error)
+	RegisterVM(ctx context.Context, in *VMData, opts ...grpc.CallOption) (*StatusResp, error)
+	SendReporting(ctx context.Context, in *ReportingRq, opts ...grpc.CallOption) (*StatusResp, error)
+	GetAllVmReporting(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ReportingResp, error)
+}
+
+type clusterGRPCServiceClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewClusterGRPCServiceClient(cc grpc.ClientConnInterface) ClusterGRPCServiceClient {
+	return &clusterGRPCServiceClient{cc}
+}
+
+func (c *clusterGRPCServiceClient) GetVMList(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ListVMResp, error) {
+	out := new(ListVMResp)
+	err := c.cc.Invoke(ctx, "/grpcexcel.ClusterGRPCService/GetVMList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clusterGRPCServiceClient) RegisterVM(ctx context.Context, in *VMData, opts ...grpc.CallOption) (*StatusResp, error) {
+	out := new(StatusResp)
+	err := c.cc.Invoke(ctx, "/grpcexcel.ClusterGRPCService/RegisterVM", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clusterGRPCServiceClient) SendReporting(ctx context.Context, in *ReportingRq, opts ...grpc.CallOption) (*StatusResp, error) {
+	out := new(StatusResp)
+	err := c.cc.Invoke(ctx, "/grpcexcel.ClusterGRPCService/SendReporting", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *clusterGRPCServiceClient) GetAllVmReporting(ctx context.Context, in *Empty, opts ...grpc.CallOption) (*ReportingResp, error) {
+	out := new(ReportingResp)
+	err := c.cc.Invoke(ctx, "/grpcexcel.ClusterGRPCService/GetAllVmReporting", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// ClusterGRPCServiceServer is the server API for ClusterGRPCService service.
+type ClusterGRPCServiceServer interface {
+	GetVMList(context.Context, *Empty) (*ListVMResp, error)
+	RegisterVM(context.Context, *VMData) (*StatusResp, error)
+	SendReporting(context.Context, *ReportingRq) (*StatusResp, error)
+	GetAllVmReporting(context.Context, *Empty) (*ReportingResp, error)
+}
+
+// UnimplementedClusterGRPCServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedClusterGRPCServiceServer struct {
+}
+
+func (*UnimplementedClusterGRPCServiceServer) GetVMList(ctx context.Context, req *Empty) (*ListVMResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetVMList not implemented")
+}
+func (*UnimplementedClusterGRPCServiceServer) RegisterVM(ctx context.Context, req *VMData) (*StatusResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterVM not implemented")
+}
+func (*UnimplementedClusterGRPCServiceServer) SendReporting(ctx context.Context, req *ReportingRq) (*StatusResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SendReporting not implemented")
+}
+func (*UnimplementedClusterGRPCServiceServer) GetAllVmReporting(ctx context.Context, req *Empty) (*ReportingResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllVmReporting not implemented")
+}
+
+func RegisterClusterGRPCServiceServer(s *grpc.Server, srv ClusterGRPCServiceServer) {
+	s.RegisterService(&_ClusterGRPCService_serviceDesc, srv)
+}
+
+func _ClusterGRPCService_GetVMList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterGRPCServiceServer).GetVMList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/grpcexcel.ClusterGRPCService/GetVMList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterGRPCServiceServer).GetVMList(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClusterGRPCService_RegisterVM_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(VMData)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterGRPCServiceServer).RegisterVM(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/grpcexcel.ClusterGRPCService/RegisterVM",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterGRPCServiceServer).RegisterVM(ctx, req.(*VMData))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClusterGRPCService_SendReporting_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReportingRq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterGRPCServiceServer).SendReporting(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/grpcexcel.ClusterGRPCService/SendReporting",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterGRPCServiceServer).SendReporting(ctx, req.(*ReportingRq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ClusterGRPCService_GetAllVmReporting_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Empty)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ClusterGRPCServiceServer).GetAllVmReporting(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/grpcexcel.ClusterGRPCService/GetAllVmReporting",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ClusterGRPCServiceServer).GetAllVmReporting(ctx, req.(*Empty))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+var _ClusterGRPCService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "grpcexcel.ClusterGRPCService",
+	HandlerType: (*ClusterGRPCServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "GetVMList",
+			Handler:    _ClusterGRPCService_GetVMList_Handler,
+		},
+		{
+			MethodName: "RegisterVM",
+			Handler:    _ClusterGRPCService_RegisterVM_Handler,
+		},
+		{
+			MethodName: "SendReporting",
+			Handler:    _ClusterGRPCService_SendReporting_Handler,
+		},
+		{
+			MethodName: "GetAllVmReporting",
+			Handler:    _ClusterGRPCService_GetAllVmReporting_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

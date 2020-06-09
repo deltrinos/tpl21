@@ -92,6 +92,18 @@ message UploadResp {
 	string errMsg = 3;
 }
 
+message DownloadRq {
+	string handler = 1;
+	string modelFile = 2;
+}
+
+message DownloadResp {
+	bytes bytes = 1;
+	string filename = 2;
+	bool isOk = 3;
+	string errMsg = 4;
+}
+
 message ListResp {
 	repeated string filename = 1;
 	bool isOk = 2;
@@ -143,14 +155,53 @@ message StatusResp {
 	 string errMsg = 2;
 }
 
+message VMData {
+	bool inScaleSet = 1;
+	string vmName = 2;
+	repeated string vmIP = 3;
+	int32 status = 4; // 0=PROVISIONNING, 1=RUNNING, -1=DISCONNECTED
+	DateTime datetime = 5;
+	float cpu = 6;
+	string errMsg = 7;
+}
+
+
+message ListVMResp {
+	repeated VMData vmData = 1;
+	bool isOk = 2;
+	string errMsg = 3;
+}
+
+message ScaleRq {
+	int32 numberOfVM = 1;
+	bool isOk = 2;
+	string errMsg = 3;
+}
+
+message ReportingRq {
+	string vmName = 1;
+	int32 NBInstanceRunning = 2;
+	int32 NBInstanceCreatedToday = 3;
+	DateTime DateTime = 4;
+	DateTime Started = 5;
+}
+
+message ReportingResp {
+	repeated ReportingRq reportingVM = 1;
+	bool isOk = 2;
+	string errMsg = 3;
+}
 
 service ExcelService {
-	rpc Ping (HandlerRq) returns (Empty);
+	rpc Ping (HandlerRq) returns (StatusResp);
 	rpc Upload(UploadRq) returns (UploadResp);
+	rpc Download(DownloadRq) returns (DownloadResp);
+
 	
 	rpc List(Empty) returns (ListResp);
+	
 	rpc Open(OpenRq) returns (OpenResp);
-	rpc Close(HandlerRq) returns (Empty);
+	rpc Close(HandlerRq) returns (StatusResp);
 
 	rpc GetNamedCells (GetNamedCellsRq) returns (NamedCellsResp);
 	rpc GetCells (GetCellsRq) returns (CellsResp);
@@ -158,4 +209,14 @@ service ExcelService {
 
 	rpc GetMacroNames(ListMacrosRq) returns (ListMacrosResp);
 	rpc RunMacro(MacroNameRq) returns (StatusResp);
+
+
+}
+
+service ClusterGRPCService {
+	rpc GetVMList(Empty) returns (ListVMResp);
+	rpc RegisterVM(VMData) returns (StatusResp);
+	rpc SendReporting(ReportingRq) returns (StatusResp);
+	rpc GetAllVmReporting(Empty) returns (ReportingResp);
+	
 }
