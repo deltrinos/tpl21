@@ -3,6 +3,7 @@ package grpc_excel
 import (
 	"context"
 	"errors"
+	"fmt"
 	excel "github.com/deltrinos/tpl21/excel/proto"
 	"github.com/rs/zerolog/log"
 	"google.golang.org/grpc"
@@ -218,4 +219,23 @@ func (client *GrpcExcelClient) Upload(name string, fileBytes []byte) error {
 		return errors.New(res.Handler)
 	}
 	return nil
+}
+
+func (client *GrpcExcelClient) Download(handler, model string) (xls []byte, filename string, resErr error) {
+	ctx, _ := context.WithTimeout(context.Background(), 100*time.Second)
+	res, err := client.c.Download(ctx, &excel.DownloadRq{
+		Handler:   handler,
+		ModelFile: model,
+	})
+	if err != nil {
+		log.Error().Err(err).Msgf("failed to Download error %v", err)
+		return xls, filename, err
+	}
+	if !res.IsOk {
+		return xls, filename, fmt.Errorf("failed to Download response error %v", res.ErrMsg)
+	}
+
+	xls = res.Bytes
+	filename = res.Filename
+	return xls, filename, resErr
 }
