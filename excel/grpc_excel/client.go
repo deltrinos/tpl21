@@ -221,7 +221,7 @@ func (client *GrpcExcelClient) Upload(name string, fileBytes []byte) error {
 	return nil
 }
 
-func (client *GrpcExcelClient) Download(handler, model string) (xls []byte, filename string, resErr error) {
+func (client *GrpcExcelClient) Download(handler, model string) (xlsBase64 string, filename string, resErr error) {
 	ctx, _ := context.WithTimeout(context.Background(), 100*time.Second)
 	res, err := client.c.Download(ctx, &excel.DownloadRq{
 		Handler:   handler,
@@ -229,13 +229,13 @@ func (client *GrpcExcelClient) Download(handler, model string) (xls []byte, file
 	})
 	if err != nil {
 		log.Error().Err(err).Msgf("failed to Download error %v", err)
-		return xls, filename, err
+		return xlsBase64, filename, err
 	}
 	if !res.IsOk {
-		return xls, filename, fmt.Errorf("failed to Download response error %v", res.ErrMsg)
+		return xlsBase64, filename, fmt.Errorf("failed to Download response error %v", res.ErrMsg)
 	}
 
-	xls = res.Bytes
+	xlsBase64 = res.Bytes
 	filename = res.Filename
-	return xls, filename, resErr
+	return xlsBase64, filename, resErr
 }

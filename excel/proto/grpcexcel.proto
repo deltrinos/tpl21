@@ -98,7 +98,7 @@ message DownloadRq {
 }
 
 message DownloadResp {
-	bytes bytes = 1;
+	string bytes = 1;
 	string filename = 2;
 	bool isOk = 3;
 	string errMsg = 4;
